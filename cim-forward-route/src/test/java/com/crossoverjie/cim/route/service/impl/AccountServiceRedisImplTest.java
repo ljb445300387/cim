@@ -3,7 +3,7 @@ package com.crossoverjie.cim.route.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.crossoverjie.cim.route.RouteApplication;
 import com.crossoverjie.cim.route.service.AccountService;
-import com.crossoverjie.cim.route.vo.res.CIMServerResVO;
+import com.crossoverjie.cim.route.vo.res.CimServerRes;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -28,7 +28,7 @@ public class AccountServiceRedisImplTest {
     public void loadRouteRelated() throws Exception {
         for (int i = 0; i < 100; i++) {
 
-            Map<Long, CIMServerResVO> longCIMServerResVOMap = accountService.loadRouteRelated();
+            Map<Long, CimServerRes> longCIMServerResVOMap = accountService.loadRouteRelated();
             LOGGER.info("longCIMServerResVOMap={},cun={}" , JSON.toJSONString(longCIMServerResVOMap),i);
         }
         TimeUnit.SECONDS.sleep(10);

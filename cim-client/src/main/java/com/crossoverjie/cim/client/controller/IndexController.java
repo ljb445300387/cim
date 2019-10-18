@@ -10,7 +10,7 @@ import com.crossoverjie.cim.client.vo.res.SendMsgResVO;
 import com.crossoverjie.cim.common.constant.Constants;
 import com.crossoverjie.cim.common.enums.StatusEnum;
 import com.crossoverjie.cim.common.res.BaseResponse;
-import com.crossoverjie.cim.common.res.NULLBody;
+import com.crossoverjie.cim.common.res.NullBody;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.metrics.CounterService;
@@ -54,8 +54,8 @@ public class IndexController {
     @ApiOperation("客户端发送消息，字符串")
     @RequestMapping(value = "sendStringMsg", method = RequestMethod.POST)
     @ResponseBody
-    public BaseResponse<NULLBody> sendStringMsg(@RequestBody StringReqVO stringReqVO){
-        BaseResponse<NULLBody> res = new BaseResponse();
+    public BaseResponse<NullBody> sendStringMsg(@RequestBody StringReqVO stringReqVO){
+        BaseResponse<NullBody> res = new BaseResponse();
 
         for (int i = 0; i < 100; i++) {
             heartbeatClient.sendStringMsg(stringReqVO.getMsg()) ;
@@ -79,8 +79,8 @@ public class IndexController {
     @ApiOperation("向服务端发消息 Google ProtoBuf")
     @RequestMapping(value = "sendProtoBufMsg", method = RequestMethod.POST)
     @ResponseBody
-    public BaseResponse<NULLBody> sendProtoBufMsg(@RequestBody GoogleProtocolVO googleProtocolVO){
-        BaseResponse<NULLBody> res = new BaseResponse();
+    public BaseResponse<NullBody> sendProtoBufMsg(@RequestBody GoogleProtocolVO googleProtocolVO){
+        BaseResponse<NullBody> res = new BaseResponse();
 
         for (int i = 0; i < 100; i++) {
             heartbeatClient.sendGoogleProtocolMsg(googleProtocolVO) ;
@@ -107,7 +107,7 @@ public class IndexController {
     @RequestMapping(value = "sendGroupMsg",method = RequestMethod.POST)
     @ResponseBody
     public BaseResponse sendGroupMsg(@RequestBody SendMsgReqVO sendMsgReqVO) throws Exception {
-        BaseResponse<NULLBody> res = new BaseResponse();
+        BaseResponse<NullBody> res = new BaseResponse();
 
         GroupReqVO groupReqVO = new GroupReqVO(sendMsgReqVO.getUserId(),sendMsgReqVO.getMsg()) ;
         routeRequest.sendGroupMsg(groupReqVO) ;

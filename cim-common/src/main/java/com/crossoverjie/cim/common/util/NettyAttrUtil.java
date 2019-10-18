@@ -8,7 +8,7 @@ import io.netty.util.AttributeKey;
  * Function:
  *
  * @author crossoverJie
- *         Date: 2019/1/9 00:57
+ * Date: 2019/1/9 00:57
  * @since JDK 1.8
  */
 public class NettyAttrUtil {
@@ -22,7 +22,6 @@ public class NettyAttrUtil {
 
     public static Long getReaderTime(Channel channel) {
         String value = getAttribute(channel, ATTR_KEY_READER_TIME);
-
         if (value != null) {
             return Long.valueOf(value);
         }

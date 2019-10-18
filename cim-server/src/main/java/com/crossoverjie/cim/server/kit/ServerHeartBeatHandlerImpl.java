@@ -1,15 +1,13 @@
 package com.crossoverjie.cim.server.kit;
 
 import com.crossoverjie.cim.common.kit.HeartBeatHandler;
-import com.crossoverjie.cim.common.pojo.CIMUserInfo;
+import com.crossoverjie.cim.common.pojo.CimUserInfo;
 import com.crossoverjie.cim.common.util.NettyAttrUtil;
 import com.crossoverjie.cim.server.config.AppConfiguration;
 import com.crossoverjie.cim.server.util.SessionSocketHolder;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,14 +28,14 @@ public class ServerHeartBeatHandlerImpl implements HeartBeatHandler {
     private AppConfiguration appConfiguration ;
 
     @Override
-    public void process(ChannelHandlerContext ctx) throws Exception {
+    public void process(ChannelHandlerContext ctx) {
 
         long heartBeatTime = appConfiguration.getHeartBeatTime() * 1000;
 
         Long lastReadTime = NettyAttrUtil.getReaderTime(ctx.channel());
         long now = System.currentTimeMillis();
         if (lastReadTime != null && now - lastReadTime > heartBeatTime){
-            CIMUserInfo userInfo = SessionSocketHolder.getUserId((NioSocketChannel) ctx.channel());
+            CimUserInfo userInfo = SessionSocketHolder.getUserId((NioSocketChannel) ctx.channel());
             if (userInfo != null){
                 log.warn("客户端[{}]心跳超时[{}]ms，需要关闭连接!",userInfo.getUserName(),now - lastReadTime);
             }

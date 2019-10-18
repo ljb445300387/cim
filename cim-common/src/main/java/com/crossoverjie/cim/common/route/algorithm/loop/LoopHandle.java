@@ -1,6 +1,7 @@
 package com.crossoverjie.cim.common.route.algorithm.loop;
 
 import com.crossoverjie.cim.common.route.algorithm.RouteHandle;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
@@ -16,8 +17,8 @@ public class LoopHandle implements RouteHandle {
     private AtomicLong index = new AtomicLong();
 
     @Override
-    public String routeServer(List<String> values,String key) {
-        if (values.size() == 0) {
+    public String routeServer(List<String> values, String key) {
+        if (CollectionUtils.isEmpty(values)) {
             throw new RuntimeException("CIM 服务器可用服务列表为空");
         }
         Long position = index.incrementAndGet() % values.size();

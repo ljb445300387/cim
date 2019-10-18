@@ -1,6 +1,6 @@
 package com.crossoverjie.cim.route.service.impl;
 
-import com.crossoverjie.cim.common.pojo.CIMUserInfo;
+import com.crossoverjie.cim.common.pojo.CimUserInfo;
 import com.crossoverjie.cim.route.service.UserInfoCacheService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -27,16 +27,16 @@ public class UserInfoCacheServiceImpl implements UserInfoCacheService {
     /**
      * 本地缓存，为了防止内存撑爆，后期可换为 LRU。
      */
-    private final static Map<Long,CIMUserInfo> USER_INFO_MAP = new ConcurrentHashMap<>(64) ;
+    private final static Map<Long, CimUserInfo> USER_INFO_MAP = new ConcurrentHashMap<>(64) ;
 
     @Autowired
     private RedisTemplate<String,String> redisTemplate ;
 
     @Override
-    public CIMUserInfo loadUserInfoByUserId(Long userId) {
+    public CimUserInfo loadUserInfoByUserId(Long userId) {
 
         //优先从本地缓存获取
-        CIMUserInfo cimUserInfo = USER_INFO_MAP.get(userId);
+        CimUserInfo cimUserInfo = USER_INFO_MAP.get(userId);
         if (cimUserInfo != null){
             return cimUserInfo ;
         }
@@ -44,7 +44,7 @@ public class UserInfoCacheServiceImpl implements UserInfoCacheService {
         //load redis
         String sendUserName = redisTemplate.opsForValue().get(ACCOUNT_PREFIX + userId);
         if (sendUserName != null){
-            cimUserInfo = new CIMUserInfo(userId,sendUserName) ;
+            cimUserInfo = new CimUserInfo(userId,sendUserName) ;
             USER_INFO_MAP.put(userId,cimUserInfo) ;
         }
 
@@ -68,14 +68,14 @@ public class UserInfoCacheServiceImpl implements UserInfoCacheService {
     }
 
     @Override
-    public Set<CIMUserInfo> onlineUser() {
-        Set<CIMUserInfo> set = null ;
+    public Set<CimUserInfo> onlineUser() {
+        Set<CimUserInfo> set = null ;
         Set<String> members = redisTemplate.opsForSet().members(LOGIN_STATUS_PREFIX);
         for (String member : members) {
             if (set == null){
                 set = new HashSet<>(64) ;
             }
-            CIMUserInfo cimUserInfo = loadUserInfoByUserId(Long.valueOf(member)) ;
+            CimUserInfo cimUserInfo = loadUserInfoByUserId(Long.valueOf(member)) ;
             set.add(cimUserInfo) ;
         }
 

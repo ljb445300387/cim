@@ -1,6 +1,6 @@
 package com.crossoverjie.cim.route.cache;
 
-import com.crossoverjie.cim.route.kit.ZKit;
+import com.crossoverjie.cim.route.kit.ZkKitService;
 import com.google.common.cache.LoadingCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,21 +14,16 @@ import java.util.concurrent.atomic.AtomicLong;
  * Function: 服务器节点缓存
  *
  * @author crossoverJie
- *         Date: 2018/8/19 01:31
+ * Date: 2018/8/19 01:31
  * @since JDK 1.8
  */
 @Component
 public class ServerCache {
-
-
     @Autowired
     private LoadingCache<String, String> cache;
-
     @Autowired
-    private ZKit zkUtil;
-
+    private ZkKitService zkUtil;
     private AtomicLong index = new AtomicLong();
-
 
     public void addCache(String key) {
         cache.put(key, key);
@@ -55,9 +50,7 @@ public class ServerCache {
      * @return
      */
     public List<String> getAll() {
-
         List<String> list = new ArrayList<>();
-
         if (cache.size() == 0) {
             List<String> allNode = zkUtil.getAllNode();
             for (String node : allNode) {

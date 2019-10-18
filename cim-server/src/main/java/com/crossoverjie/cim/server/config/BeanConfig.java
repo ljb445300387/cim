@@ -21,11 +21,11 @@ import java.util.concurrent.TimeUnit;
 public class BeanConfig {
 
     @Autowired
-    private AppConfiguration appConfiguration ;
+    private AppConfiguration conf;
 
     @Bean
     public ZkClient buildZKClient(){
-        return new ZkClient(appConfiguration.getZkAddr(), appConfiguration.getZkConnectTimeout());
+        return new ZkClient(conf.getZkAddr(), conf.getZkConnectTimeout());
     }
 
     /**

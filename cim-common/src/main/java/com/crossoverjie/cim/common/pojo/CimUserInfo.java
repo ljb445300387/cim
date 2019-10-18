@@ -1,17 +1,20 @@
-package com.crossoverjie.cim.route.vo.req;
-
-import com.crossoverjie.cim.common.req.BaseRequest;
+package com.crossoverjie.cim.common.pojo;
 
 /**
- * Function:
+ * Function: 用户信息
  *
  * @author crossoverJie
- *         Date: 2018/12/23 22:30
+ *         Date: 2018/12/24 02:33
  * @since JDK 1.8
  */
-public class LoginReqVO extends BaseRequest{
+public class CimUserInfo {
     private Long userId ;
     private String userName ;
+
+    public CimUserInfo(Long userId, String userName) {
+        this.userId = userId;
+        this.userName = userName;
+    }
 
     public Long getUserId() {
         return userId;
@@ -31,9 +34,9 @@ public class LoginReqVO extends BaseRequest{
 
     @Override
     public String toString() {
-        return "LoginReqVO{" +
+        return "CimUserInfo{" +
                 "userId=" + userId +
                 ", userName='" + userName + '\'' +
-                "} " + super.toString();
+                '}';
     }
 }

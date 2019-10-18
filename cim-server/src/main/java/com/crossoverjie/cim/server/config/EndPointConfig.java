@@ -21,7 +21,6 @@ public class EndPointConfig {
 
     @Bean
     public CustomEndpoint buildEndPoint(){
-        CustomEndpoint customEndpoint = new CustomEndpoint(channelMap) ;
-        return customEndpoint ;
+        return new CustomEndpoint(channelMap);
     }
 }

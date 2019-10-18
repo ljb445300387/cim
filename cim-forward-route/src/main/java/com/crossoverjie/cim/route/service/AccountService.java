@@ -1,10 +1,10 @@
 package com.crossoverjie.cim.route.service;
 
 import com.crossoverjie.cim.common.enums.StatusEnum;
-import com.crossoverjie.cim.route.vo.req.ChatReqVO;
-import com.crossoverjie.cim.route.vo.req.LoginReqVO;
-import com.crossoverjie.cim.route.vo.res.CIMServerResVO;
-import com.crossoverjie.cim.route.vo.res.RegisterInfoResVO;
+import com.crossoverjie.cim.route.vo.req.ChatReq;
+import com.crossoverjie.cim.route.vo.req.LoginReq;
+import com.crossoverjie.cim.route.vo.res.CimServerRes;
+import com.crossoverjie.cim.route.vo.res.RegisterInfoRes;
 
 import java.util.Map;
 
@@ -23,36 +23,36 @@ public interface AccountService {
      * @return
      * @throws Exception
      */
-    RegisterInfoResVO register(RegisterInfoResVO info) throws Exception;
+    RegisterInfoRes register(RegisterInfoRes info) throws Exception;
 
     /**
      * 登录服务
-     * @param loginReqVO 登录信息
+     * @param loginReq 登录信息
      * @return true 成功 false 失败
      * @throws Exception
      */
-    StatusEnum login(LoginReqVO loginReqVO) throws Exception ;
+    StatusEnum login(LoginReq loginReq) throws Exception ;
 
     /**
      * 保存路由信息
      * @param msg 服务器信息
-     * @param loginReqVO 用户信息
+     * @param loginReq 用户信息
      * @throws Exception
      */
-    void saveRouteInfo(LoginReqVO loginReqVO ,String msg) throws Exception ;
+    void saveRouteInfo(LoginReq loginReq, String msg) throws Exception ;
 
     /**
      * 加载所有用户的路有关系
      * @return 所有的路由关系
      */
-    Map<Long,CIMServerResVO> loadRouteRelated() ;
+    Map<Long, CimServerRes> loadRouteRelated() ;
 
     /**
      * 获取某个用户的路有关系
      * @param userId
      * @return 获取某个用户的路有关系
      */
-    CIMServerResVO loadRouteRelatedByUserId(Long userId) ;
+    CimServerRes loadRouteRelatedByUserId(Long userId) ;
 
 
     /**
@@ -62,7 +62,7 @@ public interface AccountService {
      * @param sendUserId 发送者的ID
      * @throws Exception
      */
-    void pushMsg(String url,long sendUserId ,ChatReqVO groupReqVO) throws Exception;
+    void pushMsg(String url, long sendUserId , ChatReq groupReqVO) throws Exception;
 
     /**
      * 用户下线

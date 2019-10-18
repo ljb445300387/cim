@@ -1,21 +1,23 @@
 package com.crossoverjie.cim.common.exception;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
 /**
  * Function:
  *
  * @author crossoverJie
- *         Date: 2018/8/25 15:27
+ * Date: 2018/8/25 15:27
  * @since JDK 1.8
  */
+@Data
+@NoArgsConstructor
 public class GenericException extends RuntimeException implements Serializable {
     private static final long serialVersionUID = 1L;
     String errorCode;
     String errorMessage;
-
-    public GenericException() {
-    }
 
     public GenericException(String message) {
         super(message);
@@ -41,19 +43,4 @@ public class GenericException extends RuntimeException implements Serializable {
         super(message, oriEx);
     }
 
-    public String getErrorCode() {
-        return this.errorCode;
-    }
-
-    public void setErrorCode(String errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    public String getErrorMessage() {
-        return this.errorMessage;
-    }
-
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
-    }
 }

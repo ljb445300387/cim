@@ -7,10 +7,10 @@ package com.crossoverjie.cim.common.res;
  *         Date: 2017/6/7 下午11:57
  * @since JDK 1.8
  */
-public class NULLBody {
-    public NULLBody() {}
+public class NullBody {
+    public NullBody() {}
 
-    public static NULLBody create(){
-        return new NULLBody();
+    public static NullBody create(){
+        return new NullBody();
     }
 }

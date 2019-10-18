@@ -9,17 +9,21 @@ import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 import io.netty.handler.timeout.IdleStateHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Function:
  *
  * @author crossoverJie
- *         Date: 17/05/2018 18:51
+ * Date: 17/05/2018 18:51
  * @since JDK 1.8
  */
+@Component
 public class CimServerInitializer extends ChannelInitializer<Channel> {
 
-    private final CimServerHandler cimServerHandler = new CimServerHandler() ;
+    @Autowired
+    private CimServerHandler cimServerHandler;
 
     @Override
     protected void initChannel(Channel ch) {

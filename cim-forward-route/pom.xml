@@ -25,6 +25,10 @@
     <dependencies>
 
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.crossoverjie.netty</groupId>
             <artifactId>cim-common</artifactId>
             <exclusions>

@@ -1,6 +1,6 @@
 package com.crossoverjie.cim.route.service;
 
-import com.crossoverjie.cim.common.pojo.CIMUserInfo;
+import com.crossoverjie.cim.common.pojo.CimUserInfo;
 
 import java.util.Set;
 
@@ -19,7 +19,7 @@ public interface UserInfoCacheService {
      * @return
      * @throws Exception
      */
-    CIMUserInfo loadUserInfoByUserId(Long userId) ;
+    CimUserInfo loadUserInfoByUserId(Long userId) ;
 
     /**
      * 保存和检查用户登录情况
@@ -41,5 +41,5 @@ public interface UserInfoCacheService {
      *
      * @return 获取所有在线用户
      */
-    Set<CIMUserInfo> onlineUser() ;
+    Set<CimUserInfo> onlineUser() ;
 }

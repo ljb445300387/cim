@@ -1,15 +1,13 @@
 package com.crossoverjie.cim.server.kit;
 
 import com.alibaba.fastjson.JSONObject;
-import com.crossoverjie.cim.common.pojo.CIMUserInfo;
+import com.crossoverjie.cim.common.pojo.CimUserInfo;
 import com.crossoverjie.cim.server.config.AppConfiguration;
 import com.crossoverjie.cim.server.util.SessionSocketHolder;
 import com.crossoverjie.cim.server.util.SpringBeanFactory;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -29,49 +27,33 @@ public class RouteHandler {
     @Autowired
     private AppConfiguration configuration;
 
-    /**
-     * 用户下线
-     *
-     * @param userInfo
-     * @param channel
-     * @throws IOException
-     */
-    public void userOffLine(CIMUserInfo userInfo, NioSocketChannel channel) throws IOException {
+    public void userOffLine(CimUserInfo userInfo, NioSocketChannel channel) {
         if (userInfo != null) {
-            log.info("用户[{}]下线", userInfo.getUserName());
             SessionSocketHolder.removeSession(userInfo.getUserId());
-            //清除路由关系
             clearRouteInfo(userInfo);
         }
         SessionSocketHolder.remove(channel);
 
     }
 
-
-    /**
-     * 清除路由关系
-     *
-     * @param userInfo
-     * @throws IOException
-     */
-    private void clearRouteInfo(CIMUserInfo userInfo) throws IOException {
-        OkHttpClient okHttpClient = SpringBeanFactory.getBean(OkHttpClient.class);
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("userId", userInfo.getUserId());
-        jsonObject.put("msg", "offLine");
-        RequestBody requestBody = RequestBody.create(mediaType, jsonObject.toString());
-        Request request = new Request.Builder()
-                .url(configuration.getClearRouteUrl())
-                .post(requestBody)
-                .build();
-        Response response = null;
+    private void clearRouteInfo(CimUserInfo userInfo) {
         try {
-            response = okHttpClient.newCall(request).execute();
-            if (!response.isSuccessful()) {
-                throw new IOException("Unexpected code " + response);
+            OkHttpClient okHttpClient = SpringBeanFactory.getBean(OkHttpClient.class);
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("userId", userInfo.getUserId());
+            jsonObject.put("msg", "offLine");
+            RequestBody requestBody = RequestBody.create(mediaType, jsonObject.toString());
+            Request request = new Request.Builder()
+                    .url(configuration.getClearRouteUrl())
+                    .post(requestBody)
+                    .build();
+            try (Response response = okHttpClient.newCall(request).execute();) {
+                if (!response.isSuccessful()) {
+                    throw new IOException("Unexpected code " + response);
+                }
             }
-        } finally {
-            response.body().close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

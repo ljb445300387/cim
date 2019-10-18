@@ -1,7 +1,7 @@
 package com.crossoverjie.cim.route.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.crossoverjie.cim.common.pojo.CIMUserInfo;
+import com.crossoverjie.cim.common.pojo.CimUserInfo;
 import com.crossoverjie.cim.route.RouteApplication;
 import com.crossoverjie.cim.route.service.UserInfoCacheService;
 import org.junit.Test;
@@ -37,7 +37,7 @@ public class UserInfoCacheServiceImplTest {
 
     @Test
     public void onlineUser(){
-        Set<CIMUserInfo> cimUserInfos = userInfoCacheService.onlineUser();
+        Set<CimUserInfo> cimUserInfos = userInfoCacheService.onlineUser();
         LOGGER.info("cimUserInfos={}", JSON.toJSONString(cimUserInfos));
     }
 

@@ -1,7 +1,7 @@
 package com.crossoverjie.cim.server;
 
 import com.crossoverjie.cim.server.config.AppConfiguration;
-import com.crossoverjie.cim.server.kit.RegistryZk;
+import com.crossoverjie.cim.server.kit.ZkService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,7 +18,9 @@ import java.net.InetAddress;
 @SpringBootApplication
 public class CimServerApplication implements CommandLineRunner {
     @Autowired
-    private AppConfiguration appConfiguration;
+    private AppConfiguration conf;
+    @Autowired
+    private ZkService zkService;
 
     @Value("${server.port}")
     private int httpPort;
@@ -29,10 +31,7 @@ public class CimServerApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        //获得本机IP
         String addr = InetAddress.getLocalHost().getHostAddress();
-        Thread thread = new Thread(new RegistryZk(addr, appConfiguration.getCimServerPort(), httpPort));
-        thread.setName("registry-zk");
-        thread.start();
+        zkService.regist(addr, conf.getCimServerPort(), httpPort);
     }
 }
