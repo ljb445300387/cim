@@ -1,5 +1,6 @@
 package com.crossoverjie.cim.server.config;
 
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -7,9 +8,10 @@ import org.springframework.stereotype.Component;
  * Function:
  *
  * @author crossoverJie
- *         Date: 2018/8/24 01:43
+ * Date: 2018/8/24 01:43
  * @since JDK 1.8
  */
+@Data
 @Component
 public class AppConfiguration {
 
@@ -26,63 +28,12 @@ public class AppConfiguration {
     private int cimServerPort;
 
     @Value("${cim.clear.route.request.url}")
-    private String clearRouteUrl ;
+    private String clearRouteUrl;
 
     @Value("${cim.heartbeat.time}")
-    private long heartBeatTime ;
-    
+    private long heartBeatTime;
+
     @Value("${app.zk.connect.timeout}")
     private int zkConnectTimeout;
-    
-    public int getZkConnectTimeout() {
-		return zkConnectTimeout;
-	}
-    
-    public String getClearRouteUrl() {
-        return clearRouteUrl;
-    }
 
-    public void setClearRouteUrl(String clearRouteUrl) {
-        this.clearRouteUrl = clearRouteUrl;
-    }
-
-    public String getZkRoot() {
-        return zkRoot;
-    }
-
-    public void setZkRoot(String zkRoot) {
-        this.zkRoot = zkRoot;
-    }
-
-    public String getZkAddr() {
-        return zkAddr;
-    }
-
-    public void setZkAddr(String zkAddr) {
-        this.zkAddr = zkAddr;
-    }
-
-    public boolean isZkSwitch() {
-        return zkSwitch;
-    }
-
-    public void setZkSwitch(boolean zkSwitch) {
-        this.zkSwitch = zkSwitch;
-    }
-
-    public int getCimServerPort() {
-        return cimServerPort;
-    }
-
-    public void setCimServerPort(int cimServerPort) {
-        this.cimServerPort = cimServerPort;
-    }
-
-    public long getHeartBeatTime() {
-        return heartBeatTime;
-    }
-
-    public void setHeartBeatTime(long heartBeatTime) {
-        this.heartBeatTime = heartBeatTime;
-    }
 }

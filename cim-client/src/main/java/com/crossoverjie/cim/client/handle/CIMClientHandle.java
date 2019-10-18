@@ -6,7 +6,7 @@ import com.crossoverjie.cim.client.service.impl.EchoServiceImpl;
 import com.crossoverjie.cim.client.thread.ReConnectJob;
 import com.crossoverjie.cim.client.util.SpringBeanFactory;
 import com.crossoverjie.cim.common.constant.Constants;
-import com.crossoverjie.cim.common.protocol.CIMRequestProto;
+import com.crossoverjie.cim.common.protocol.CimRequestProto;
 import com.crossoverjie.cim.common.protocol.CIMResponseProto;
 import com.crossoverjie.cim.common.util.NettyAttrUtil;
 import com.vdurmont.emoji.EmojiParser;
@@ -55,8 +55,8 @@ public class CIMClientHandle extends SimpleChannelInboundHandler<CIMResponseProt
             //LOGGER.info("定时检测服务端是否存活");
 
             if (idleStateEvent.state() == IdleState.WRITER_IDLE){
-                CIMRequestProto.CIMReqProtocol heartBeat = SpringBeanFactory.getBean("heartBeat",
-                        CIMRequestProto.CIMReqProtocol.class);
+                CimRequestProto.CimReqProtocol heartBeat = SpringBeanFactory.getBean("heartBeat",
+                        CimRequestProto.CimReqProtocol.class);
                 ctx.writeAndFlush(heartBeat).addListeners((ChannelFutureListener) future -> {
                     if (!future.isSuccess()) {
                         LOGGER.error("IO error,close Channel");

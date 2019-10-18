@@ -1,8 +1,8 @@
 package com.crossoverjie.cim.server.server;
 
 import com.crossoverjie.cim.common.constant.Constants;
-import com.crossoverjie.cim.common.protocol.CIMRequestProto;
-import com.crossoverjie.cim.server.init.CIMServerInitializer;
+import com.crossoverjie.cim.common.protocol.CimRequestProto;
+import com.crossoverjie.cim.server.init.CimServerInitializer;
 import com.crossoverjie.cim.server.util.SessionSocketHolder;
 import com.crossoverjie.cim.server.vo.req.SendMsgReqVO;
 import io.netty.bootstrap.ServerBootstrap;
@@ -57,7 +57,7 @@ public class CIMServer {
                 .localAddress(new InetSocketAddress(nettyPort))
                 //保持长连接
                 .childOption(ChannelOption.SO_KEEPALIVE, true)
-                .childHandler(new CIMServerInitializer());
+                .childHandler(new CimServerInitializer());
 
         ChannelFuture future = bootstrap.bind().sync();
         if (future.isSuccess()) {
@@ -87,7 +87,7 @@ public class CIMServer {
         if (null == socketChannel) {
             throw new NullPointerException("客户端[" + sendMsgReqVO.getUserId() + "]不在线！");
         }
-        CIMRequestProto.CIMReqProtocol protocol = CIMRequestProto.CIMReqProtocol.newBuilder()
+        CimRequestProto.CimReqProtocol protocol = CimRequestProto.CimReqProtocol.newBuilder()
                 .setRequestId(sendMsgReqVO.getUserId())
                 .setReqMsg(sendMsgReqVO.getMsg())
                 .setType(Constants.CommandType.MSG)

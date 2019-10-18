@@ -1,7 +1,7 @@
 package com.crossoverjie.cim.server.config;
 
 import com.crossoverjie.cim.common.constant.Constants;
-import com.crossoverjie.cim.common.protocol.CIMRequestProto;
+import com.crossoverjie.cim.common.protocol.CimRequestProto;
 import okhttp3.OkHttpClient;
 import org.I0Itec.zkclient.ZkClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,8 +48,8 @@ public class BeanConfig {
      * @return
      */
     @Bean(value = "heartBeat")
-    public CIMRequestProto.CIMReqProtocol heartBeat() {
-        CIMRequestProto.CIMReqProtocol heart = CIMRequestProto.CIMReqProtocol.newBuilder()
+    public CimRequestProto.CimReqProtocol heartBeat() {
+        CimRequestProto.CimReqProtocol heart = CimRequestProto.CimReqProtocol.newBuilder()
                 .setRequestId(0L)
                 .setReqMsg("pong")
                 .setType(Constants.CommandType.PING)

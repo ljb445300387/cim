@@ -4,7 +4,7 @@ import com.crossoverjie.cim.client.handle.MsgHandleCaller;
 import com.crossoverjie.cim.client.service.impl.MsgCallBackListener;
 import com.crossoverjie.cim.common.constant.Constants;
 import com.crossoverjie.cim.common.data.construct.RingBufferWheel;
-import com.crossoverjie.cim.common.protocol.CIMRequestProto;
+import com.crossoverjie.cim.common.protocol.CimRequestProto;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import okhttp3.OkHttpClient;
 import org.slf4j.Logger;
@@ -43,8 +43,8 @@ public class BeanConfig {
      * @return
      */
     @Bean(value = "heartBeat")
-    public CIMRequestProto.CIMReqProtocol heartBeat() {
-        CIMRequestProto.CIMReqProtocol heart = CIMRequestProto.CIMReqProtocol.newBuilder()
+    public CimRequestProto.CimReqProtocol heartBeat() {
+        CimRequestProto.CimReqProtocol heart = CimRequestProto.CimReqProtocol.newBuilder()
                 .setRequestId(userId)
                 .setReqMsg("ping")
                 .setType(Constants.CommandType.PING)

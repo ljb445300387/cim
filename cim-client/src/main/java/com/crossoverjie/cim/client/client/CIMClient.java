@@ -10,7 +10,7 @@ import com.crossoverjie.cim.client.vo.req.GoogleProtocolVO;
 import com.crossoverjie.cim.client.vo.req.LoginReqVO;
 import com.crossoverjie.cim.client.vo.res.CIMServerResVO;
 import com.crossoverjie.cim.common.constant.Constants;
-import com.crossoverjie.cim.common.protocol.CIMRequestProto;
+import com.crossoverjie.cim.common.protocol.CimRequestProto;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -151,7 +151,7 @@ public class CIMClient {
      * 向服务器注册
      */
     private void loginCIMServer() {
-        CIMRequestProto.CIMReqProtocol login = CIMRequestProto.CIMReqProtocol.newBuilder()
+        CimRequestProto.CimReqProtocol login = CimRequestProto.CimReqProtocol.newBuilder()
                 .setRequestId(userId)
                 .setReqMsg(userName)
                 .setType(Constants.CommandType.LOGIN)
@@ -183,7 +183,7 @@ public class CIMClient {
      */
     public void sendGoogleProtocolMsg(GoogleProtocolVO googleProtocolVO) {
 
-        CIMRequestProto.CIMReqProtocol protocol = CIMRequestProto.CIMReqProtocol.newBuilder()
+        CimRequestProto.CimReqProtocol protocol = CimRequestProto.CimReqProtocol.newBuilder()
                 .setRequestId(googleProtocolVO.getRequestId())
                 .setReqMsg(googleProtocolVO.getMsg())
                 .setType(Constants.CommandType.MSG)

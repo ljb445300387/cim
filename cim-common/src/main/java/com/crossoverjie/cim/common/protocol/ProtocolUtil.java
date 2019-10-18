@@ -12,14 +12,14 @@ import com.google.protobuf.InvalidProtocolBufferException;
 public class ProtocolUtil {
 
     public static void main(String[] args) throws InvalidProtocolBufferException {
-        CIMRequestProto.CIMReqProtocol protocol = CIMRequestProto.CIMReqProtocol.newBuilder()
+        CimRequestProto.CimReqProtocol protocol = CimRequestProto.CimReqProtocol.newBuilder()
                 .setRequestId(123L)
                 .setReqMsg("你好啊")
                 .build();
 
         byte[] encode = encode(protocol);
 
-        CIMRequestProto.CIMReqProtocol parseFrom = decode(encode);
+        CimRequestProto.CimReqProtocol parseFrom = decode(encode);
 
         System.out.println(protocol.toString());
         System.out.println(protocol.toString().equals(parseFrom.toString()));
@@ -30,7 +30,7 @@ public class ProtocolUtil {
      * @param protocol
      * @return
      */
-    public static byte[] encode(CIMRequestProto.CIMReqProtocol protocol){
+    public static byte[] encode(CimRequestProto.CimReqProtocol protocol){
         return protocol.toByteArray() ;
     }
 
@@ -40,7 +40,7 @@ public class ProtocolUtil {
      * @return
      * @throws InvalidProtocolBufferException
      */
-    public static CIMRequestProto.CIMReqProtocol decode(byte[] bytes) throws InvalidProtocolBufferException {
-        return CIMRequestProto.CIMReqProtocol.parseFrom(bytes);
+    public static CimRequestProto.CimReqProtocol decode(byte[] bytes) throws InvalidProtocolBufferException {
+        return CimRequestProto.CimReqProtocol.parseFrom(bytes);
     }
 }
