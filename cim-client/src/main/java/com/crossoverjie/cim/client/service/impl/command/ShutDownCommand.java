@@ -1,6 +1,6 @@
 package com.crossoverjie.cim.client.service.impl.command;
 
-import com.crossoverjie.cim.client.client.CIMClient;
+import com.crossoverjie.cim.client.client.CimClient;
 import com.crossoverjie.cim.client.service.EchoService;
 import com.crossoverjie.cim.client.service.InnerCommand;
 import com.crossoverjie.cim.client.service.MsgLogger;
@@ -31,7 +31,7 @@ public class ShutDownCommand implements InnerCommand {
     private RouteRequest routeRequest ;
 
     @Autowired
-    private CIMClient cimClient;
+    private CimClient cimClient;
 
     @Autowired
     private MsgLogger msgLogger;

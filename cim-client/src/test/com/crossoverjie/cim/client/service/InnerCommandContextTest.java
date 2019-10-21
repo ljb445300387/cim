@@ -1,6 +1,6 @@
 package com.crossoverjie.cim.client.service;
 
-import com.crossoverjie.cim.client.CIMClientApplication;
+import com.crossoverjie.cim.client.CimClientApplication;
 import com.crossoverjie.cim.common.enums.SystemCommandEnum;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -5,39 +5,36 @@
 public class Test {
 
     public static void main(String[] args) {
-        FizzBuzz fizzBuzz = new FizzBuzz(16);
+        H2O fizzBuzz = new H2O();
         new Thread(() -> {
             try {
-                fizzBuzz.fizz(() -> {
-                    System.out.println("fizz");
-                });
+                for (int i = 0; i < 20; i++) {
+                    fizzBuzz.hydrogen(() -> {
+                        System.out.println("H");
+                    });
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }).start();
         new Thread(() -> {
             try {
-                fizzBuzz.buzz(() -> {
-                    System.out.println("buzz");
-                });
+                for (int i = 0; i < 10; i++) {
+                    fizzBuzz.oxygen(() -> {
+                        System.out.println("O");
+                    });
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }).start();
         new Thread(() -> {
             try {
-                fizzBuzz.fizzbuzz(() -> {
-                    System.out.println("fizzbuzz");
-                });
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
-        new Thread(() -> {
-            try {
-                fizzBuzz.number((value) -> {
-                    System.out.println(value);
-                });
+                for (int i = 0; i < 10; i++) {
+                    fizzBuzz.oxygen(() -> {
+                        System.out.println("O");
+                    });
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

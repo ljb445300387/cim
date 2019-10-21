@@ -1,14 +1,14 @@
 package com.crossoverjie.cim.client.service.impl;
 
-import com.crossoverjie.cim.client.client.CIMClient;
+import com.crossoverjie.cim.client.client.CimClient;
 import com.crossoverjie.cim.client.config.AppConfiguration;
 import com.crossoverjie.cim.client.service.InnerCommand;
 import com.crossoverjie.cim.client.service.InnerCommandContext;
 import com.crossoverjie.cim.client.service.MsgHandle;
 import com.crossoverjie.cim.client.service.MsgLogger;
 import com.crossoverjie.cim.client.service.RouteRequest;
-import com.crossoverjie.cim.client.vo.req.GroupReqVO;
-import com.crossoverjie.cim.client.vo.req.P2PReqVO;
+import com.crossoverjie.cim.client.vo.req.GroupReq;
+import com.crossoverjie.cim.client.vo.req.SingleChatReq;
 import com.crossoverjie.cim.common.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +39,7 @@ public class MsgHandler implements MsgHandle {
     private ThreadPoolExecutor executor;
 
     @Autowired
-    private CIMClient cimClient;
+    private CimClient cimClient;
 
     @Autowired
     private MsgLogger msgLogger;
@@ -70,21 +70,21 @@ public class MsgHandler implements MsgHandle {
         String[] totalMsg = msg.split(";;");
         if (totalMsg.length > 1) {
             //私聊
-            P2PReqVO p2PReqVO = new P2PReqVO();
-            p2PReqVO.setUserId(configuration.getUserId());
-            p2PReqVO.setReceiveUserId(Long.parseLong(totalMsg[0]));
-            p2PReqVO.setMsg(totalMsg[1]);
+            SingleChatReq singleChatReq = new SingleChatReq();
+            singleChatReq.setUserId(configuration.getUserId());
+            singleChatReq.setReceiveUserId(Long.parseLong(totalMsg[0]));
+            singleChatReq.setMsg(totalMsg[1]);
             try {
-                p2pChat(p2PReqVO);
+                p2pChat(singleChatReq);
             } catch (Exception e) {
                 LOGGER.error("Exception", e);
             }
 
         } else {
             //群聊
-            GroupReqVO groupReqVO = new GroupReqVO(configuration.getUserId(), msg);
+            GroupReq groupReq = new GroupReq(configuration.getUserId(), msg);
             try {
-                groupChat(groupReqVO);
+                groupChat(groupReq);
             } catch (Exception e) {
                 LOGGER.error("Exception", e);
             }
@@ -106,14 +106,14 @@ public class MsgHandler implements MsgHandle {
     }
 
     @Override
-    public void groupChat(GroupReqVO groupReqVO) throws Exception {
-        routeRequest.sendGroupMsg(groupReqVO);
+    public void groupChat(GroupReq groupReq) throws Exception {
+        routeRequest.sendGroupMsg(groupReq);
     }
 
     @Override
-    public void p2pChat(P2PReqVO p2PReqVO) throws Exception {
+    public void p2pChat(SingleChatReq singleChatReq) throws Exception {
 
-        routeRequest.sendP2PMsg(p2PReqVO);
+        routeRequest.sendP2PMsg(singleChatReq);
 
     }
 
@@ -131,7 +131,7 @@ public class MsgHandler implements MsgHandle {
 
         if (msg.startsWith(":")) {
 
-            InnerCommand instance = innerCommandContext.getInstance(msg);
+            InnerCommand instance = innerCommandContext.getCommand(msg);
             instance.process(msg) ;
 
             return true;

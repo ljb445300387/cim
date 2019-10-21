@@ -3,7 +3,7 @@ package com.crossoverjie.cim.client.service.impl.command;
 import com.crossoverjie.cim.client.service.EchoService;
 import com.crossoverjie.cim.client.service.InnerCommand;
 import com.crossoverjie.cim.client.service.RouteRequest;
-import com.crossoverjie.cim.client.vo.res.OnlineUsersResVO;
+import com.crossoverjie.cim.client.vo.res.OnlineUsersRes;
 import com.crossoverjie.cim.common.data.construct.TrieTree;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,9 +32,9 @@ public class PrefixSearchCommand implements InnerCommand {
     @Override
     public void process(String msg) {
         try {
-            List<OnlineUsersResVO.DataBodyBean> onlineUsers = routeRequest.onlineUsers();
+            List<OnlineUsersRes.DataBodyBean> onlineUsers = routeRequest.onlineUsers();
             TrieTree trieTree = new TrieTree();
-            for (OnlineUsersResVO.DataBodyBean onlineUser : onlineUsers) {
+            for (OnlineUsersRes.DataBodyBean onlineUser : onlineUsers) {
                 trieTree.insert(onlineUser.getUserName());
             }
 

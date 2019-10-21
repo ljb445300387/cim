@@ -1,6 +1,6 @@
 package com.crossoverjie.cim.client.service.impl;
 
-import com.crossoverjie.cim.client.CIMClientApplication;
+import com.crossoverjie.cim.client.CimClientApplication;
 import com.crossoverjie.cim.client.service.MsgLogger;
 import org.junit.Test;
 import org.junit.runner.RunWith;

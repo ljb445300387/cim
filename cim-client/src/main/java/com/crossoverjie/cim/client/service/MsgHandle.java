@@ -1,7 +1,7 @@
 package com.crossoverjie.cim.client.service;
 
-import com.crossoverjie.cim.client.vo.req.GroupReqVO;
-import com.crossoverjie.cim.client.vo.req.P2PReqVO;
+import com.crossoverjie.cim.client.vo.req.GroupReq;
+import com.crossoverjie.cim.client.vo.req.SingleChatReq;
 
 /**
  * Function:消息处理器
@@ -20,17 +20,17 @@ public interface MsgHandle {
 
     /**
      * 群聊
-     * @param groupReqVO 群聊消息 其中的 userId 为发送者的 userID
+     * @param groupReq 群聊消息 其中的 userId 为发送者的 userID
      * @throws Exception
      */
-    void groupChat(GroupReqVO groupReqVO) throws Exception ;
+    void groupChat(GroupReq groupReq) throws Exception ;
 
     /**
      * 私聊
-     * @param p2PReqVO 私聊请求
+     * @param singleChatReq 私聊请求
      * @throws Exception
      */
-    void p2pChat(P2PReqVO p2PReqVO) throws Exception;
+    void p2pChat(SingleChatReq singleChatReq) throws Exception;
 
 
     // TODO: 2018/12/26 后续对消息的处理可以优化为责任链模式

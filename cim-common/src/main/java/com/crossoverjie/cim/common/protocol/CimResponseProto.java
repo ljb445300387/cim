@@ -3,8 +3,8 @@
 
 package com.crossoverjie.cim.common.protocol;
 
-public final class CIMResponseProto {
-  private CIMResponseProto() {}
+public final class CimResponseProto {
+  private CimResponseProto() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
@@ -15,7 +15,7 @@ public final class CIMResponseProto {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface CIMResProtocolOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protocol.CIMResProtocol)
+      // @@protoc_insertion_point(interface_extends:protocol.CimResProtocol)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -51,18 +51,18 @@ public final class CIMResponseProto {
     int getType();
   }
   /**
-   * Protobuf type {@code protocol.CIMResProtocol}
+   * Protobuf type {@code protocol.CimResProtocol}
    */
-  public  static final class CIMResProtocol extends
+  public  static final class CimResProtocol extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protocol.CIMResProtocol)
+      // @@protoc_insertion_point(message_implements:protocol.CimResProtocol)
       CIMResProtocolOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use CIMResProtocol.newBuilder() to construct.
-    private CIMResProtocol(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use CimResProtocol.newBuilder() to construct.
+    private CimResProtocol(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private CIMResProtocol() {
+    private CimResProtocol() {
       responseId_ = 0L;
       resMsg_ = "";
       type_ = 0;
@@ -73,7 +73,7 @@ public final class CIMResponseProto {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private CIMResProtocol(
+    private CimResProtocol(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -129,14 +129,14 @@ public final class CIMResponseProto {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return CIMResponseProto.internal_static_protocol_CIMResProtocol_descriptor;
+      return CimResponseProto.internal_static_protocol_CIMResProtocol_descriptor;
     }
 
     protected FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return CIMResponseProto.internal_static_protocol_CIMResProtocol_fieldAccessorTable
+      return CimResponseProto.internal_static_protocol_CIMResProtocol_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              CIMResProtocol.class, Builder.class);
+              CimResProtocol.class, Builder.class);
     }
 
     private int bitField0_;
@@ -274,10 +274,10 @@ public final class CIMResponseProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof CIMResProtocol)) {
+      if (!(obj instanceof CimResProtocol)) {
         return super.equals(obj);
       }
-      CIMResProtocol other = (CIMResProtocol) obj;
+      CimResProtocol other = (CimResProtocol) obj;
 
       boolean result = true;
       result = result && (hasResponseId() == other.hasResponseId());
@@ -324,69 +324,69 @@ public final class CIMResponseProto {
       return hash;
     }
 
-    public static CIMResProtocol parseFrom(
+    public static CimResProtocol parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static CIMResProtocol parseFrom(
+    public static CimResProtocol parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static CIMResProtocol parseFrom(
+    public static CimResProtocol parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static CIMResProtocol parseFrom(
+    public static CimResProtocol parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static CIMResProtocol parseFrom(byte[] data)
+    public static CimResProtocol parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static CIMResProtocol parseFrom(
+    public static CimResProtocol parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static CIMResProtocol parseFrom(java.io.InputStream input)
+    public static CimResProtocol parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static CIMResProtocol parseFrom(
+    public static CimResProtocol parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static CIMResProtocol parseDelimitedFrom(java.io.InputStream input)
+    public static CimResProtocol parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static CIMResProtocol parseDelimitedFrom(
+    public static CimResProtocol parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static CIMResProtocol parseFrom(
+    public static CimResProtocol parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static CIMResProtocol parseFrom(
+    public static CimResProtocol parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -398,7 +398,7 @@ public final class CIMResponseProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(CIMResProtocol prototype) {
+    public static Builder newBuilder(CimResProtocol prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -413,25 +413,25 @@ public final class CIMResponseProto {
       return builder;
     }
     /**
-     * Protobuf type {@code protocol.CIMResProtocol}
+     * Protobuf type {@code protocol.CimResProtocol}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protocol.CIMResProtocol)
+        // @@protoc_insertion_point(builder_implements:protocol.CimResProtocol)
         CIMResProtocolOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return CIMResponseProto.internal_static_protocol_CIMResProtocol_descriptor;
+        return CimResponseProto.internal_static_protocol_CIMResProtocol_descriptor;
       }
 
       protected FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return CIMResponseProto.internal_static_protocol_CIMResProtocol_fieldAccessorTable
+        return CimResponseProto.internal_static_protocol_CIMResProtocol_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                CIMResProtocol.class, Builder.class);
+                CimResProtocol.class, Builder.class);
       }
 
-      // Construct using com.crossoverjie.cim.common.protocol.CIMResponseProto.CIMResProtocol.newBuilder()
+      // Construct using com.crossoverjie.cim.common.protocol.CimResponseProto.CimResProtocol.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -459,23 +459,23 @@ public final class CIMResponseProto {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return CIMResponseProto.internal_static_protocol_CIMResProtocol_descriptor;
+        return CimResponseProto.internal_static_protocol_CIMResProtocol_descriptor;
       }
 
-      public CIMResProtocol getDefaultInstanceForType() {
-        return CIMResProtocol.getDefaultInstance();
+      public CimResProtocol getDefaultInstanceForType() {
+        return CimResProtocol.getDefaultInstance();
       }
 
-      public CIMResProtocol build() {
-        CIMResProtocol result = buildPartial();
+      public CimResProtocol build() {
+        CimResProtocol result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public CIMResProtocol buildPartial() {
-        CIMResProtocol result = new CIMResProtocol(this);
+      public CimResProtocol buildPartial() {
+        CimResProtocol result = new CimResProtocol(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -522,16 +522,16 @@ public final class CIMResponseProto {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof CIMResProtocol) {
-          return mergeFrom((CIMResProtocol)other);
+        if (other instanceof CimResProtocol) {
+          return mergeFrom((CimResProtocol)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(CIMResProtocol other) {
-        if (other == CIMResProtocol.getDefaultInstance()) return this;
+      public Builder mergeFrom(CimResProtocol other) {
+        if (other == CimResProtocol.getDefaultInstance()) return this;
         if (other.hasResponseId()) {
           setResponseId(other.getResponseId());
         }
@@ -565,11 +565,11 @@ public final class CIMResponseProto {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        CIMResProtocol parsedMessage = null;
+        CimResProtocol parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (CIMResProtocol) e.getUnfinishedMessage();
+          parsedMessage = (CimResProtocol) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -730,39 +730,40 @@ public final class CIMResponseProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protocol.CIMResProtocol)
+      // @@protoc_insertion_point(builder_scope:protocol.CimResProtocol)
     }
 
-    // @@protoc_insertion_point(class_scope:protocol.CIMResProtocol)
-    private static final CIMResProtocol DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protocol.CimResProtocol)
+    private static final CimResProtocol DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new CIMResProtocol();
+      DEFAULT_INSTANCE = new CimResProtocol();
     }
 
-    public static CIMResProtocol getDefaultInstance() {
+    public static CimResProtocol getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @Deprecated public static final com.google.protobuf.Parser<CIMResProtocol>
-        PARSER = new com.google.protobuf.AbstractParser<CIMResProtocol>() {
-      public CIMResProtocol parsePartialFrom(
+    @Deprecated public static final com.google.protobuf.Parser<CimResProtocol>
+        PARSER = new com.google.protobuf.AbstractParser<CimResProtocol>() {
+      public CimResProtocol parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CIMResProtocol(input, extensionRegistry);
+        return new CimResProtocol(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<CIMResProtocol> parser() {
+    public static com.google.protobuf.Parser<CimResProtocol> parser() {
       return PARSER;
     }
 
     @Override
-    public com.google.protobuf.Parser<CIMResProtocol> getParserForType() {
+    public com.google.protobuf.Parser<CimResProtocol> getParserForType() {
       return PARSER;
     }
 
-    public CIMResProtocol getDefaultInstanceForType() {
+    @Override
+    public CimResProtocol getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 

@@ -1,14 +1,13 @@
 package com.crossoverjie.cim.client.service;
 
 import com.crossoverjie.cim.client.service.impl.command.PrintAllCommand;
-import com.crossoverjie.cim.client.util.SpringBeanFactory;
 import com.crossoverjie.cim.common.enums.SystemCommandEnum;
 import com.crossoverjie.cim.common.util.StringUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
+import java.util.List;
 
 /**
  * Function:
@@ -18,32 +17,21 @@ import java.util.Map;
  * @since JDK 1.8
  */
 @Component
+@Slf4j
 public class InnerCommandContext {
-    private final static Logger LOGGER = LoggerFactory.getLogger(InnerCommandContext.class);
+    @Autowired
+    private List<InnerCommand> innerCommandList;
+    @Autowired
+    private PrintAllCommand printAllCommand;
 
-    /**
-     * 获取执行器实例
-     * @param command 执行器实例
-     * @return
-     */
-    public InnerCommand getInstance(String command) {
-
-        Map<String, String> allClazz = SystemCommandEnum.getAllClazz();
-
-        //兼容需要命令后接参数的数据 :q cross
+    public InnerCommand getCommand(String command) {
         String[] trim = command.trim().split(" ");
-        String clazz = allClazz.get(trim[0]);
-        InnerCommand innerCommand = null;
-        try {
-            if (StringUtil.isEmpty(clazz)){
-                clazz = PrintAllCommand.class.getName() ;
-            }
-            innerCommand = (InnerCommand) SpringBeanFactory.getBean(Class.forName(clazz));
-        } catch (Exception e) {
-            LOGGER.error("Exception", e);
+        //兼容需要命令后接参数的数据 :q cross
+        String clazz = SystemCommandEnum.getAllClazz().get(trim[0]);
+        if (StringUtil.isEmpty(clazz)) {
+            return printAllCommand;
         }
-
-        return innerCommand;
+        return innerCommandList.stream().filter(x -> x.getClass().getName().equals(clazz)).findAny().orElse(null);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.crossoverjie.cim.client.service.impl;
 
 
+import lombok.Data;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -15,68 +16,34 @@ import java.util.Date;
 @Component
 public class ClientInfo {
 
-    private Info info = new Info() ;
+    private Info info = new Info();
 
-    public Info get(){
-        return info ;
+    public Info get() {
+        return info;
     }
 
-    public ClientInfo saveUserInfo(long userId,String userName){
+    public ClientInfo saveUserInfo(long userId, String userName) {
         info.setUserId(userId);
         info.setUserName(userName);
         return this;
     }
 
 
-    public ClientInfo saveServiceInfo(String serviceInfo){
+    public ClientInfo saveServiceInfo(String serviceInfo) {
         info.setServiceInfo(serviceInfo);
         return this;
     }
 
-    public ClientInfo saveStartDate(){
+    public ClientInfo saveStartDate() {
         info.setStartDate(new Date());
         return this;
     }
 
-    public class Info{
+    @Data
+    public class Info {
         private String userName;
-        private long userId ;
-        private String serviceInfo ;
-        private Date startDate ;
-
-        public Info() {
-        }
-
-        public String getUserName() {
-            return userName;
-        }
-
-        public void setUserName(String userName) {
-            this.userName = userName;
-        }
-
-        public long getUserId() {
-            return userId;
-        }
-
-        public void setUserId(long userId) {
-            this.userId = userId;
-        }
-
-        public String getServiceInfo() {
-            return serviceInfo;
-        }
-
-        public void setServiceInfo(String serviceInfo) {
-            this.serviceInfo = serviceInfo;
-        }
-
-        public Date getStartDate() {
-            return startDate;
-        }
-
-        public void setStartDate(Date startDate) {
-            this.startDate = startDate;
-        }
+        private long userId;
+        private String serviceInfo;
+        private Date startDate;
     }
 }

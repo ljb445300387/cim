@@ -3,7 +3,7 @@ package com.crossoverjie.cim.client.service.impl.command;
 import com.crossoverjie.cim.client.service.EchoService;
 import com.crossoverjie.cim.client.service.InnerCommand;
 import com.crossoverjie.cim.client.service.RouteRequest;
-import com.crossoverjie.cim.client.vo.res.OnlineUsersResVO;
+import com.crossoverjie.cim.client.vo.res.OnlineUsersRes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +32,10 @@ public class PrintOnlineUsersCommand implements InnerCommand {
     @Override
     public void process(String msg) {
         try {
-            List<OnlineUsersResVO.DataBodyBean> onlineUsers = routeRequest.onlineUsers();
+            List<OnlineUsersRes.DataBodyBean> onlineUsers = routeRequest.onlineUsers();
 
             echoService.echo("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            for (OnlineUsersResVO.DataBodyBean onlineUser : onlineUsers) {
+            for (OnlineUsersRes.DataBodyBean onlineUser : onlineUsers) {
                 echoService.echo("userId={}=====userName={}",onlineUser.getUserId(),onlineUser.getUserName());
             }
             echoService.echo("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");

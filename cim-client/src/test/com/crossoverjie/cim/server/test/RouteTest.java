@@ -1,6 +1,6 @@
 package com.crossoverjie.cim.server.test;
 
-import com.crossoverjie.cim.client.CIMClientApplication;
+import com.crossoverjie.cim.client.CimClientApplication;
 import com.crossoverjie.cim.client.service.RouteRequest;
 import com.crossoverjie.cim.client.vo.req.LoginReqVO;
 import com.crossoverjie.cim.client.vo.res.CIMServerResVO;
